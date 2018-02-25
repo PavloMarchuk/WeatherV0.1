@@ -17,39 +17,20 @@ namespace Web.Controllers
 	{
 		private static string KEY = "37766c27205f21f7f3115c2727d3e4c1";
 		private static string startPathCurentWeather = "http://api.openweathermap.org/data/2.5/weather?id=";
-		private static string startPathForecastDaily = "api.openweathermap.org/data/2.5/forecast/daily?id=";
+		private static string startPathForecastDaily = "http://api.openweathermap.org/data/2.5/forecast/daily?id=";
 
 		private static string ApiCurrent = "&units=metric&APPID=";
-		private static string ApiForecast = "&units=metric&cnt=6&APPID=";
-
-		//"703448&APPID=3e1125480c3c82908e7a4531618c3082";
-		//private static string forecastSTR =
-	  // "api.openweathermap.org/data/2.5/forecast?id=703448&APPID=3e1125480c3c82908e7a4531618c3082";
-		//private static string CityId = "703448";
-		//private static string ApiKey =   "3e1125480c3c82908e7a4531618c3082";
-		//private static string ApiKey = "&APPID=" + "7f1e9f3473468550ad03c2c53a9a90d1";
-		
-		//3e1125480c3c82908e7a4531618c3082
-		// присланий ключ 
-		//"http://api.openweathermap.org/data/2.5/forecast/daily?id=703448&units=metric&cnt=8&APPID=37766c27205f21f7f3115c2727d3e4c1"
-		//поточна температура
-		//  http://api.openweathermap.org/data/2.5/weather?id=703448&units=metric&APPID=37766c27205f21f7f3115c2727d3e4c1
+		private static string ApiForecast = "&units=metric&cnt=6&APPID="; // first 6 days
 
 
-		//  http://api.openweathermap.org/data/2.5/weather?id=703448&APPID=3e1125480c3c82908e7a4531618c3082
 
-		//"http://api.openweathermap.org/data/2.5/forecast/daily?id=703448&APPID=37766c27205f21f7f3115c2727d3e4c1&cnt=5"
+		//forecast
+		//  "http://api.openweathermap.org/data/2.5/forecast/daily?id=703448&units=metric&APPID=37766c27205f21f7f3115c2727d3e4c1"
 
-		//http://api.openweathermap.org/data/2.5/weather?id=b1b15e88fa797225412429c1c50c122a1
-		//static City Kyiv = new City
-		//{
-		//	name = "Kiev",
-		//	id = 703448,
-		//	country = "UA",
-		//	coord = new Coord { lat = 30.516666, lon = 50.433334 }
-		//};
-		//Country country = new Country{cities = new List<City> { Kyiv }, countryName = Kyiv.country };
-				
+		//current
+		// "http://api.openweathermap.org/data/2.5/weather?id=703448&units=metric&APPID=37766c27205f21f7f3115c2727d3e4c1"
+
+
 
 		public ActionResult Index()
 		{
@@ -64,55 +45,82 @@ namespace Web.Controllers
 
 		public ActionResult WeatherPartial(int id = 703448 /*Kyiv*/)
 		{
-			ViewBag.PassedIdTMP = id;
-			//id = Kyiv.id;
-			GeneralViewModel model = new GeneralViewModel();
-			//string path = "http://api.openweathermap.org/data/2.5/weather?id=703448&APPID=3e1125480c3c82908e7a4531618c3082";
-			//string path = startPathCurentWeather + id + ApiKey;
+			//ViewBag.PassedIdTMP = id; //tmp !!
 			
-			string jsonCurrent;
-			string jsonForecast;
-			//WebRequest request = WebRequest.Create(path);
-			//WebResponse response = request.GetResponse();
-			//using (Stream stream = response.GetResponseStream())
+			GeneralViewModel model = new GeneralViewModel();// modelObject
+						
+			string pathCurrent = startPathCurentWeather + id + ApiCurrent + KEY; //запит на поточну погоду
+			string pathForecast = startPathForecastDaily + id + ApiForecast + KEY; // запит на прогноз
+
+			//string jsonCurrent;//json Current
+			string jsonForecast;// json Forecast
+
+			////// 1) отримуємо поточну погоду
+			//WebRequest request1 = WebRequest.Create(pathCurrent);
+			//WebResponse response1 = request1.GetResponse();
+			//using (Stream stream = response1.GetResponseStream())
 			//{
 			//	using (StreamReader reader = new StreamReader(stream))
 			//	{
-			//		jsonStr = reader.ReadToEnd();					
+			//		jsonCurrent = reader.ReadToEnd();
 			//	}
 			//}
-			//response.Close();
-			///// TMP!!!!!
-			jsonCurrent = StaticData.GetJSONCurrent;
-			jsonForecast = StaticData.GetJSONForecast;
-			/////
-			model.CurrentWeather = JsonConvert.DeserializeObject<CurrentWeatherVM>(jsonCurrent);
+			//response1.Close();
+
+			//2) отримуємо прогноз на 6 днів 
+			WebRequest request2 = WebRequest.Create(pathForecast);
+			WebResponse response2 = request2.GetResponse();
+			using (Stream stream = response2.GetResponseStream())
+			{
+				using (StreamReader reader = new StreamReader(stream))
+				{
+					jsonForecast = reader.ReadToEnd();
+				}
+			}
+			response2.Close();
+
+			/////// TMP!!!!! // для отладки закоментувати запити
+			//jsonCurrent = StaticData.GetJSONCurrent(Server.MapPath("~"));
+			//jsonForecast = StaticData.GetJSONForecast(Server.MapPath("~"));
+			///////
+
+			// десеріалізація результатів у C# класи
+			//model.CurrentWeather = JsonConvert.DeserializeObject<CurrentWeatherVM>(jsonCurrent);
 			model.Forecast = JsonConvert.DeserializeObject<ForecastVM>(jsonForecast);
 
+			#region MyRegion	
+			//// для економії одного запиту можна
+			//// витягувати поточну погоду з об'єкту прогнозу:	
+			DateTime today = DateTime.Today;
+			model.CurrentWeather = model.Forecast.list
+				.Where(f => f.date.Day == today.Day)
+				.Select(c => new CurrentWeatherVM
+				{
+					name = model.Forecast.city.name,
+					dt = c.dt,
+					weather = new List<CurrentWeatherVM.Weather>
+					{
+						new CurrentWeatherVM.Weather
+						{
+							description = c.weather.First().description ,
+							icon = c.weather.First().icon
+						}
+					},
+					main = new CurrentWeatherVM.Main
+					{
+						temp = c.temp.day,
+						temp_max = c.temp.max,
+						temp_min = c.temp.min,
+						pressure = c.pressure,
+						humidity = c.humidity
+					},
+					id = model.Forecast.city.id
+				})
+				.First();
+
+			#endregion
 
 			return PartialView(model);			
-		}
-
-		//public ActionResult Forecast8Partial(int id = 0 /*703448*/)
-		//{
-		//	ViewBag.ForecasdIdTMP = id;
-		//	//string path = startPathForecast + id + ApiKey;
-		//	ForecastVM res;
-		//	string jsonStr;
-			
-		//	//WebRequest .....
-		//	jsonStr = StaticData.GetJSONForecast;//tmp
-		//	res = JsonConvert.DeserializeObject<ForecastVM>(jsonStr);
-		//	List<ForecastVM.List> model = res.list;
-
-
-		//	return PartialView(model);
-		//}
-		
-		//public ActionResult TMP()
-		//{
-		//	var model = new City();
-		//	return View(model);
-		//}
+		}		
 	}
 }

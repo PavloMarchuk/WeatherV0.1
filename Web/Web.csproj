@@ -142,6 +142,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bootstrap Html Helpers\HelperMethods.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TMPController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,7 +181,9 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <None Include="App_Data\UkrainianCities.json" />
+    <Content Include="AppFiles\CurrentWeather.json" />
+    <Content Include="AppFiles\forecast.json" />
+    <None Include="AppFiles\UkrainianCities.json" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -303,8 +306,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\WeatherPartial.cshtml" />
-    <Content Include="Views\Home\TMP.cshtml" />
-    <Content Include="Views\Home\Forecast8Partial.cshtml" />
+    <Content Include="Views\TMP\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

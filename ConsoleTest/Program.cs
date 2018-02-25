@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Web.Models;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using System.Web.Hosting;
 
 namespace ConsoleTest
 {
@@ -60,24 +61,26 @@ namespace ConsoleTest
 			////1519552800
 			//Console.WriteLine(1519552800 /86400/365);
 
-			string citieaJSon = StaticData.GetUkrainianCities;
-			List<CityVM> cities = JsonConvert.DeserializeObject<List<CityVM>>(citieaJSon);
+			string jsonCities =  StaticData.GetUkrainianCities;
+			//List<CityVM> cities = JsonConvert.DeserializeObject<List<CityVM>>(citieaJSon);
 			//List<CityVM> model = cities.Where(c => c.country == "UA").ToList();
 
-			Console.WriteLine(cities.Count);
+			//CityVM model = new CityVM();
+			//model  = JsonConvert.DeserializeObject<CityVM>(jsonCities);
+
+
+
+			Console.WriteLine(jsonCities);
 
 			
-				//IEnumerable<CityVM> query = model.OrderBy(city=> city.name);
-
-			//var modelOrd = model.OrderBy(c => c.name).ToList() ;
 
 
 
 
-			string json = JsonConvert.SerializeObject(cities, Formatting.Indented);
+			//string json = JsonConvert.SerializeObject(cities, Formatting.Indented);
 			
-			File.WriteAllText(@"F:\Projects\0.9 WORK\07. OpenWeatherMapAPI_.Net_4.5\Weather\ConsoleTest\CitiesList.json", json);
-			//Console.WriteLine(json);
+			//File.WriteAllText(@"F:\Projects\0.9 WORK\07. OpenWeatherMapAPI_.Net_4.5\Weather\ConsoleTest\CitiesList.json", json);
+			////Console.WriteLine(json);
 
 			Console.Read();
 			Console.Read();

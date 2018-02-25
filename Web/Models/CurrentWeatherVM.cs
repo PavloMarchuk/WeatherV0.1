@@ -27,7 +27,7 @@ namespace Web.Models
 		//public Sys sys { get; set; }
 		public int id { get; set; }
 		public string name { get; set; }
-		public int cod { get; set; }
+		//public int cod { get; set; }
 
 		public class Weather
 		{
@@ -38,7 +38,7 @@ namespace Web.Models
 		public class Main
 		{
 			public double temp { get; set; }
-			public int pressure { get; set; }
+			public double pressure { get; set; }
 			public int humidity { get; set; }
 			public double temp_min { get; set; }
 			public double temp_max { get; set; }
@@ -65,9 +65,5 @@ namespace Web.Models
 		//	public int sunset { get; set; }
 		//}
 
-	}
-
-
-
-
+	}	
 }

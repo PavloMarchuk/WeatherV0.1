@@ -7,8 +7,20 @@ namespace Web.Models
 {
 	public class ForecastVM
 	{
-		
+		//unnecessary fields are commented out but not removed
+
+		public City city { get; set; }
 		public List<List> list { get; set; }
+
+
+		public class City
+		{
+			public int id { get; set; }
+			public string name { get; set; }
+			//public Coord coord { get; set; }
+			//public string country { get; set; }
+			//public int population { get; set; }
+		}
 
 		public class Temp
 		{
@@ -29,8 +41,7 @@ namespace Web.Models
 		}
 
 		public class List
-		{
-			
+		{			
 			public DateTime date
 			{
 				get {
@@ -40,8 +51,8 @@ namespace Web.Models
 			}
 			public int dt { get; set; }
 			public Temp temp { get; set; }
-			//public double pressure { get; set; }
-			//public int humidity { get; set; }
+			public double pressure { get; set; }
+			public int humidity { get; set; }
 			public List<Weather> weather { get; set; }
 			//public double speed { get; set; }
 			//public int deg { get; set; }
