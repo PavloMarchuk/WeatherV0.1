@@ -1,0 +1,193 @@
+﻿{
+	"city": {
+		"id": 703448,
+		"name": "Kiev",
+		"coord": {
+			"lon": 30.5167,
+			"lat": 50.4333
+		},
+		"country": "UA",
+		"population": 0
+	},
+	"cod": "200",
+	"message": 0.057738,
+	"cnt": 7,
+	"list": [
+		{
+			"dt": 1519466400,
+			"temp": {
+				"day": -9.07,
+				"min": -13.14,
+				"max": -9.07,
+				"night": -13.14,
+				"eve": -10.99,
+				"morn": -10.71
+			},
+			"pressure": 1015.43,
+			"humidity": 0,
+			"weather": [
+				{
+					"id": 600,
+					"main": "Snow",
+					"description": "light snow",
+					"icon": "13d"
+				}
+			],
+			"speed": 5.75,
+			"deg": 82,
+			"clouds": 88,
+			"snow": 0.03
+		},
+		{
+			"dt": 1519552800,
+			"temp": {
+				"day": -13.2,
+				"min": -16.21,
+				"max": -11.23,
+				"night": -14.73,
+				"eve": -11.35,
+				"morn": -15.54
+			},
+			"pressure": 1022.54,
+			"humidity": 90,
+			"weather": [
+				{
+					"id": 600,
+					"main": "Snow",
+					"description": "light snow",
+					"icon": "13d"
+				}
+			],
+			"speed": 4.26,
+			"deg": 26,
+			"clouds": 48,
+			"snow": 0.18
+		},
+		{
+			"dt": 1519639200,
+			"temp": {
+				"day": -13.42,
+				"min": -20.48,
+				"max": -11.61,
+				"night": -20.48,
+				"eve": -13.64,
+				"morn": -18.63
+			},
+			"pressure": 1024.23,
+			"humidity": 98,
+			"weather": [
+				{
+					"id": 600,
+					"main": "Snow",
+					"description": "light snow",
+					"icon": "13d"
+				}
+			],
+			"speed": 2.13,
+			"deg": 345,
+			"clouds": 8,
+			"snow": 0.05
+		},
+		{
+			"dt": 1519725600,
+			"temp": {
+				"day": -15.48,
+				"min": -22.27,
+				"max": -11.72,
+				"night": -11.72,
+				"eve": -11.84,
+				"morn": -22.27
+			},
+			"pressure": 1020.9,
+			"humidity": 80,
+			"weather": [
+				{
+					"id": 601,
+					"main": "Snow",
+					"description": "snow",
+					"icon": "13d"
+				}
+			],
+			"speed": 6.68,
+			"deg": 57,
+			"clouds": 76,
+			"snow": 3.53
+		},
+		{
+			"dt": 1519812000,
+			"temp": {
+				"day": -6.07,
+				"min": -18.67,
+				"max": -4.09,
+				"night": -18.67,
+				"eve": -10.57,
+				"morn": -4.09
+			},
+			"pressure": 1003.98,
+			"humidity": 0,
+			"weather": [
+				{
+					"id": 601,
+					"main": "Snow",
+					"description": "snow",
+					"icon": "13d"
+				}
+			],
+			"speed": 9.06,
+			"deg": 231,
+			"clouds": 80,
+			"snow": 1.72
+		},
+		{
+			"dt": 1519898400,
+			"temp": {
+				"day": -3.67,
+				"min": -12.4,
+				"max": -3.67,
+				"night": -6.21,
+				"eve": -4.21,
+				"morn": -12.4
+			},
+			"pressure": 1008.79,
+			"humidity": 0,
+			"weather": [
+				{
+					"id": 601,
+					"main": "Snow",
+					"description": "snow",
+					"icon": "13d"
+				}
+			],
+			"speed": 6.77,
+			"deg": 139,
+			"clouds": 98,
+			"snow": 2.38
+		},
+		{
+			"dt": 1519984800,
+			"temp": {
+				"day": 0.15,
+				"min": -11.07,
+				"max": 7.41,
+				"night": 7.41,
+				"eve": 4.23,
+				"morn": -11.07
+			},
+			"pressure": 1003.98,
+			"humidity": 0,
+			"weather": [
+				{
+					"id": 800,
+					"main": "Clear",
+					"description": "sky is clear",
+					"icon": "01d"
+				}
+			],
+			"speed": 5.88,
+			"deg": 133,
+			"clouds": 75,
+			"rain": 0.53,
+			"snow": 0.01
+		}
+	]
+}

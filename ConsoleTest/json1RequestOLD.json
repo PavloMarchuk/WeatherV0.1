@@ -1,0 +1,42 @@
+﻿{
+	"coord": {
+		"lon": 30.52,
+		"lat": 50.43
+	},
+	"weather": [
+		{
+			"id": 602,
+			"main": "Snow",
+			"description": "heavy snow",
+			"icon": "13d"
+		}
+	],
+	"base": "stations",
+	"main": {
+		"temp": 266.15,
+		"pressure": 1016,
+		"humidity": 79,
+		"temp_min": 265.15,
+		"temp_max": 267.15
+	},
+	"visibility": 1100,
+	"wind": {
+		"speed": 6,
+		"deg": 100
+	},
+	"clouds": { "all": 90 },
+	"dt": 1519475580,
+	"sys": {
+		"type": 1,
+		"id": 7358,
+		"message": 0.0029,
+		"country": "UA",
+		"sunrise": 1519447877,
+		"sunset": 1519486298
+	},
+	"id": 703448,
+	"name": "Kiev",
+	"cod": 200
+}
+
+//{"coord":{"lon":30.52,"lat":50.43},"weather":[{"id":602,"main":"Snow","description":"heavy snow","icon":"13d"}],"base":"stations","main":{"temp":266.15,"pressure":1016,"humidity":79,"temp_min":265.15,"temp_max":267.15},"visibility":1100,"wind":{"speed":6,"deg":100},"clouds":{"all":90},"dt":1519475580,"sys":{"type":1,"id":7358,"message":0.0029,"country":"UA","sunrise":1519447877,"sunset":1519486298},"id":703448,"name":"Kiev","cod":200}
