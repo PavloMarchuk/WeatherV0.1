@@ -162,57 +162,6 @@
 			"deg": 139,
 			"clouds": 98,
 			"snow": 2.38
-		},
-		{
-			"dt": 1519984800,
-			"temp": {
-				"day": 0.15,
-				"min": -11.07,
-				"max": 7.41,
-				"night": 7.41,
-				"eve": 4.23,
-				"morn": -11.07
-			},
-			"pressure": 1003.98,
-			"humidity": 0,
-			"weather": [
-				{
-					"id": 800,
-					"main": "Clear",
-					"description": "sky is clear",
-					"icon": "01d"
-				}
-			],
-			"speed": 5.88,
-			"deg": 133,
-			"clouds": 75,
-			"rain": 0.53,
-			"snow": 0.01
-		},
-		{
-			"dt": 1520071200,
-			"temp": {
-				"day": 6.46,
-				"min": 1.45,
-				"max": 6.56,
-				"night": 1.45,
-				"eve": 4.45,
-				"morn": 6.56
-			},
-			"pressure": 993.06,
-			"humidity": 0,
-			"weather": [
-				{
-					"id": 501,
-					"main": "Rain",
-					"description": "moderate rain",
-					"icon": "10d"
-				}
-			],
-			"speed": 4.13,
-			"deg": 183,
-			"clouds": 99,
-			"rain": 3.39
-		}
+		}	
 	]
 }

@@ -1,0 +1,17 @@
+﻿@model List<Web.Models.ForecastVM.List>
+@ViewBag.ForecasdIdTMP;
+
+<div class="row">
+
+	@foreach (Web.Models.ForecastVM.List item in Model)
+	{
+		string iconsrc = "http://openweathermap.org/img/w/" + item.weather[0].icon + ".png";
+		<div class="col col-md-2">
+			<label>@item.date.ToString("dd.MM")</label>
+			<label class="col col-md-12"><img src="@iconsrc" /><br /></label>
+			<label class="col col-md-12">@item.weather[0].description</label> <br />
+			<label class="col col-md-12">@item.temp.day℃</label>
+		</div>
+	}
+
+</div>

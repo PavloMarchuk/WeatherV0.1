@@ -43,10 +43,11 @@
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Coord.cs" />
     <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\ModelForecast16.cs" />
     <Compile Include="Models\ModelForecast.cs" />
     <Compile Include="Models\ModelResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StabCurentW.cs" />
+    <Compile Include="StabCurentW_old.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="forecast.json" />

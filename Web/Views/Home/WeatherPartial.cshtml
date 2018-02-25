@@ -1,29 +1,40 @@
-﻿@model DAL.Models.RootObject
+﻿
+@using System.Globalization;
+@using System.Threading;
+@model Web.Models.GeneralViewModel
 
-@*@ViewBag.str*@
+<h4>Погода у @Model.CurrentWeather.name     @ViewBag.PassedIdTMP</h4>
 
-<h4>СЬОГОДНІ, @DateTime.Now.ToString("dd.MM")</h4>
+@{ Thread.CurrentThread.CurrentCulture = new CultureInfo("uk-UA");}
+
+	<h4>		
+		@Model.CurrentWeather.date.ToString("dddd dd.MM")
+	</h4>
+
+
+
+
 
 <div class="row">
-	@Html.LabelFor(model => model.main.temp, htmlAttributes: new { @class = "control-label col-md-2" })
-	<div class="col col-md-4">@(Model.main.temp)℃</div>
+	@Html.LabelFor(model => model.CurrentWeather.main.temp, htmlAttributes: new { @class = "control-label col-md-2" })
+	<div class="col col-md-4">@(Model.CurrentWeather.main.temp)℃</div>
 </div>
 
 <div class="row">
-	@Html.LabelFor(model => model.main.temp_max, htmlAttributes: new { @class = "control-label col-md-2" })
-	<div class="col col-md-4">@(Model.main.temp_max)℃</div>
+	@Html.LabelFor(model => model.CurrentWeather.main.temp_max, htmlAttributes: new { @class = "control-label col-md-2" })
+	<div class="col col-md-4">@(Model.CurrentWeather.main.temp_max)℃</div>
 </div>
 
 <div class="row">
-	@Html.LabelFor(model => model.main.temp_min, htmlAttributes: new { @class = "control-label col-md-2" })
-	<div class="col col-md-4">@(Model.main.temp_min)℃</div>
+	@Html.LabelFor(model => model.CurrentWeather.main.temp_min, htmlAttributes: new { @class = "control-label col-md-2" })
+	<div class="col col-md-4">@(Model.CurrentWeather.main.temp_min)℃</div>
 </div>
 
 <div class="row">
 	<div class="col col-md-8"><label>Опади:</label></div>
 </div>
-	
-@foreach (var item in Model.weather)
+
+@foreach (var item in Model.CurrentWeather.weather)
 {
 	string iconsrc = "http://openweathermap.org/img/w/" + item.icon + ".png";
 	<div class="row">
@@ -35,12 +46,29 @@
 }
 
 <div class="row">
-	@Html.LabelFor(model => model.main.humidity, htmlAttributes: new { @class = "control-label col-md-2" })
-	<div class="col col-md-4">@(Model.main.humidity)%</div>
+	@Html.LabelFor(model => model.CurrentWeather.main.humidity, htmlAttributes: new { @class = "control-label col-md-2" })
+	<div class="col col-md-4">@(Model.CurrentWeather.main.humidity)%</div>
 </div>
 <div class="row">
-	@Html.LabelFor(model => model.main.pressure, htmlAttributes: new { @class = "control-label col-md-2" })
-	<div class="col col-md-4">@(Model.main.pressure)</div>
+	@Html.LabelFor(model => model.CurrentWeather.main.pressure, htmlAttributes: new { @class = "control-label col-md-2" })
+	<div class="col col-md-4">@(Model.CurrentWeather.main.pressure)</div>
 </div>
 
+
+@*прогноз погоди на 6 днів*@
+<hr />
+<div class="row">
+
+	@foreach (Web.Models.ForecastVM.List item in Model.Forecast.list)
+	{
+		string iconsrc = "http://openweathermap.org/img/w/" + item.weather[0].icon + ".png";
+		<div class="col col-md-2">
+			<label>@item.date.ToString("dd.MM")</label>
+			<label class="col col-md-12"><img src="@iconsrc" /><br /></label>
+			<label class="col col-md-12">@item.weather[0].description</label> <br />
+			<label class="col col-md-12">@item.temp.day℃</label>
+		</div>
+	}
+
+</div>
 

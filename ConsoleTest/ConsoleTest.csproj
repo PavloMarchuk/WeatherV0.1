@@ -50,6 +50,8 @@
   <ItemGroup>
     <None Include="App.config" />
     <Content Include="city.list.json" />
+    <None Include="CitiesList.json" />
+    <None Include="UkrainianCities.json" />
     <None Include="json1RequestOLD.json" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -57,6 +59,10 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{596e1457-c176-43b8-908c-c194078e7621}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web\Web.csproj">
+      <Project>{D4040683-387F-46FC-9461-A75A068318E8}</Project>
+      <Name>Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

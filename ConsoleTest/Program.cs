@@ -3,6 +3,11 @@ using System.Net;
 using Newtonsoft.Json;
 using System.IO;
 using DAL.Models;
+using DAL;
+using System.Collections.Generic;
+using Web.Models;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace ConsoleTest
 {
@@ -30,19 +35,51 @@ namespace ConsoleTest
 			//		string jsonStr = reader.ReadToEnd();
 			//		RootObject rootObject = JsonConvert.DeserializeObject<RootObject>(jsonStr);
 
-					
+
 			//		Console.WriteLine(rootObject.name);
 			//		Console.WriteLine($"Температура {(Int32)(rootObject.main.temp - 273.15)} C");
 			//	}
 			//}
 
-			string NOW = DateTime.Now.ToString("dd.MM");
+			//DateTime NOW = DateTime.Now;
 
-			//response.Close();
+			////response.Close();
 
-			int id = 12345;
-			string res = "qwerty" + id;
-			Console.WriteLine(res);
+			//int id = 12345;
+			//string res = "qwerty" + id;
+			//Console.WriteLine(res);
+
+			////1519552800
+			//DateTime d = new DateTime(1519552800);
+			//Console.WriteLine(d.ToString("dd.MM  ss"));
+
+			//long now = NOW.Ticks;
+			//Console.WriteLine(now);
+
+			////1519466400
+			////1519552800
+			//Console.WriteLine(1519552800 /86400/365);
+
+			string citieaJSon = StaticData.GetUkrainianCities;
+			List<CityVM> cities = JsonConvert.DeserializeObject<List<CityVM>>(citieaJSon);
+			//List<CityVM> model = cities.Where(c => c.country == "UA").ToList();
+
+			Console.WriteLine(cities.Count);
+
+			
+				//IEnumerable<CityVM> query = model.OrderBy(city=> city.name);
+
+			//var modelOrd = model.OrderBy(c => c.name).ToList() ;
+
+
+
+
+			string json = JsonConvert.SerializeObject(cities, Formatting.Indented);
+			
+			File.WriteAllText(@"F:\Projects\0.9 WORK\07. OpenWeatherMapAPI_.Net_4.5\Weather\ConsoleTest\CitiesList.json", json);
+			//Console.WriteLine(json);
+
+			Console.Read();
 			Console.Read();
 		}		
 	}

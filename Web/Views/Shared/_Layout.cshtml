@@ -1,24 +1,31 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - My ASP.NET Application</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+	@*<link href="~/Content/bootstrap-select.min.css" rel="stylesheet" />*@
+
+	
+
 </head>
 <body>
-   
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy;2018 - Pavlo Marchuk</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("MyScript", required: false)
+	<h2> <img src="https://cdn3.iconfinder.com/data/icons/tango-icon-library/48/weather-clear-64.png" /> Погода </h2>
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer>
+			<p>&copy;2018 - Pavlo Marchuk</p>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+
+	@*<script src="~/Scripts/bootstrap-select.min.js"></script>*@
+	@RenderSection("MyScript", required: false)
 </body>
 </html>

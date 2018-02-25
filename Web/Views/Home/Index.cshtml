@@ -1,34 +1,44 @@
-﻿@model DAL.Models.City
+﻿@model IEnumerable<Web.Models.CityVM>
+
 
 @{
 	ViewBag.Title = "Погода";
 }
 
-<h2>Погода</h2>
-
 <div>
-
 	<div class="row">
-		@Html.HiddenFor(model => model.id,  new { id = "cityid"})
-		<div class="col col-md-2">країна: @Model.country </div>
-		<div class="col col-md-2"> місто: @Model.name</div>
+		<div class="col col-md-12">
+			@Html.DropDownList("UkrainianCities", null, new { @class = "selectpicker", data_style = "btn-primary" })
+
+			<div id="weatherresult"></div>
+		</div>
 	</div>
-	<hr />
 	
-
-	
-	@*@Html.Partial("WeatherPartial");*@
-
-	<div   id="weatherresult"></div>
 </div>
 
 @section MyScript{
-	<script type="text/javascript">
-		$(function () {
+<script type="text/javascript">
+	$(function () {
+		var startId = 703448;/* Kiev*/
+		var UkrainianCities = $("#UkrainianCities");// один раз знаходимо комбобокс
+		
+		UkrainianCities.val(startId); // знаходимо Київ
 
-			$('#weatherresult').load('@Url.Action("WeatherPartial", "Home")', { id: $('#cityid').val() });
-		});
-	</script>
+		// функція підгрузки
+		var loader = function () {
+			$('#weatherresult').load('@Url.Action("WeatherPartial", "Home")'
+				, { id: UkrainianCities.val() });
+		};
+
+		loader(); // перший виклик функції
+
+		// вішаємо обработчик події
+		UkrainianCities.change(function () {
+			loader();
+		});		
+	});
+</script>
 }
+
 
 
