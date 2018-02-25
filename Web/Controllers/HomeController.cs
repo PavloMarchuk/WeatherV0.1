@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 //using DAL.Models;
-
 using System.Net;
 using Newtonsoft.Json;
 using System.IO;
@@ -21,9 +20,7 @@ namespace Web.Controllers
 
 		private static string ApiCurrent = "&units=metric&APPID=";
 		private static string ApiForecast = "&units=metric&cnt=6&APPID="; // first 6 days
-
-
-
+		
 		//forecast
 		//  "http://api.openweathermap.org/data/2.5/forecast/daily?id=703448&units=metric&APPID=37766c27205f21f7f3115c2727d3e4c1"
 

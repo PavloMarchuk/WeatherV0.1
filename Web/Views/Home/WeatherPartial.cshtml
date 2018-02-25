@@ -8,7 +8,7 @@
 @{ Thread.CurrentThread.CurrentCulture = new CultureInfo("uk-UA");}
 
 <h4> @Model.CurrentWeather.date.ToString("dd MMMM")</h4>
-<h4>@Model.CurrentWeather.date.ToString("dddd")</h4>
+@*<h4>@Model.CurrentWeather.date.ToString("dddd")</h4>*@
 
 
 <div class="row">
@@ -63,7 +63,7 @@
 		{
 			string iconsrc = "http://openweathermap.org/img/w/" + item.weather[0].icon + ".png";
 			<div class="col col-md-2">
-				<label>@item.date.ToString("dd.MM dddd")</label>
+				<label>@item.date.ToString("dd.MM")</label>
 				<label class="col col-md-12"><img src="@iconsrc" /><br /></label>
 				<label class="col col-md-12">@item.weather[0].description</label> <br />
 				<label class="col col-md-12">@item.temp.day℃</label>

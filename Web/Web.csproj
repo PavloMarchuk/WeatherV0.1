@@ -142,7 +142,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bootstrap Html Helpers\HelperMethods.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TMPController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -306,13 +305,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\WeatherPartial.cshtml" />
-    <Content Include="Views\TMP\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{596e1457-c176-43b8-908c-c194078e7621}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
