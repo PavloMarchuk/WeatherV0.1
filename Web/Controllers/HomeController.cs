@@ -14,12 +14,12 @@ namespace Web.Controllers
 {	 
 	public class HomeController : Controller
 	{
-		private static string KEY = "37766c27205f21f7f3115c2727d3e4c1";
-		private static string startPathCurentWeather = "http://api.openweathermap.org/data/2.5/weather?id=";
-		private static string startPathForecastDaily = "http://api.openweathermap.org/data/2.5/forecast/daily?id=";
+		static string KEY = "37766c27205f21f7f3115c2727d3e4c1";
+		static string startPathCurentWeather = "http://api.openweathermap.org/data/2.5/weather?id=";
+		static string startPathForecastDaily = "http://api.openweathermap.org/data/2.5/forecast/daily?id=";
 
-		private static string ApiCurrent = "&units=metric&APPID=";
-		private static string ApiForecast = "&units=metric&cnt=6&APPID="; // first 6 days
+		static string ApiCurrent = "&units=metric&APPID=";
+		static string ApiForecast = "&units=metric&cnt=6&APPID="; // first 6 days
 		
 		//forecast
 		//  "http://api.openweathermap.org/data/2.5/forecast/daily?id=703448&units=metric&APPID=37766c27205f21f7f3115c2727d3e4c1"
@@ -31,19 +31,22 @@ namespace Web.Controllers
 
 		public ActionResult Index()
 		{
-			//виймаємо із json 1675 українських міст (92kb)
-			string citieaJSon = StaticData.GetUkrainianCities;
-			List<CityVM> cities = JsonConvert.DeserializeObject<List<CityVM>>(citieaJSon);
-			
+			List<CityVM> cities = new List<CityVM>
+			{
+				new CityVM{ id =703448, name = "Київ" },
+				new CityVM{ id= 698740, name = "Одеса" },
+				new CityVM{ id = 686967, name = "Житомир"}
+			}; 
+			//   //виймаємо із json 1675 українських міст (92kb)
+			//   string citieaJSon = StaticData.GetUkrainianCities;
+			//List<CityVM> cities = JsonConvert.DeserializeObject<List<CityVM>>(citieaJSon);
+						
 			ViewBag.UkrainianCities = new SelectList(cities, "id", "name");
-
 			return View();
 		}
 
 		public ActionResult WeatherPartial(int id = 703448 /*Kyiv*/)
 		{
-			//ViewBag.PassedIdTMP = id; //tmp !!
-			
 			GeneralViewModel model = new GeneralViewModel();// modelObject
 						
 			string pathCurrent = startPathCurentWeather + id + ApiCurrent + KEY; //запит на поточну погоду
@@ -76,9 +79,9 @@ namespace Web.Controllers
 			}
 			response2.Close();
 
-			/////// TMP!!!!! // для отладки закоментувати запити
-			//jsonCurrent = StaticData.GetJSONCurrent(Server.MapPath("~"));
-			//jsonForecast = StaticData.GetJSONForecast(Server.MapPath("~"));
+			/////// TMP!!!!! // для отладки закоментувати всі WebRequest
+			//jsonCurrent = StaticData.GetJSONCurrent;
+			//jsonForecast = StaticData.GetJSONForecast;
 			///////
 
 			// десеріалізація результатів у C# класи
